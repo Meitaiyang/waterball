@@ -37,8 +37,7 @@ class HumanPlayer(Player):
         self.__inputCard = input("Choose a card to play: ")
 
         if (int(self.__inputCard) < 0 or int(self.__inputCard) > len(self.getHand.getCard)-1):
-            print("Please enter a valid number")
-            self.showHandCards()
+            raise Exception("Card index out of range")
 
         return self.getHand.showCards(int(self.__inputCard))
             
