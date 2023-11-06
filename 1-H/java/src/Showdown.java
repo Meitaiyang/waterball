@@ -14,7 +14,7 @@ public class Showdown {
     public void start() {
         playerNameSelf();
         deck.shuffle();
-        for (int round = 0; round <= 13; round++) {
+        for (int round = 1; round <= 13; round++) {
             takeTurn(players);
             compare(players);
         }

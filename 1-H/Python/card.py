@@ -1,10 +1,10 @@
 from enum import Enum, auto
 
 class Suit(Enum):
-    SPADE = auto()
-    HEART = auto()
-    DIAMOND = auto()
     CLUB = auto()
+    DIAMOND = auto()
+    HEART = auto()
+    SPADE = auto()
 
     def __str__(self):
         return self.name
