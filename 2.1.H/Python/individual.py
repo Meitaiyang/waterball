@@ -1,10 +1,11 @@
 class Individual:
-    def __init__(self, id, gender, age, introduct, habit):
+    def __init__(self, id, gender, age, introduct, habit, coord):
         self.id = id
         self.gender = gender
         self.age = age
         self.introduct = introduct
         self.habit = habit
+        self.coordinate = coord
 
     def setIndividual(self, match_individual):
         self.individual = match_individual
@@ -21,4 +22,5 @@ class Individual:
     def getHabbit(self):
         return self.habit
     
-    
+    def getId(self):
+        return self.id

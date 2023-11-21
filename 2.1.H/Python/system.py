@@ -9,12 +9,9 @@ class System():
     def getIndividuals(self):
         return self.individuals
 
-    def addIndividual(self, individual):
-        self.individuals.append(individual)
-
     def match(self, individual):
-        target = self.matchStragety.match(self.individuals, individual)
-        return target
+        result = self.matchStragety.match(self.individuals, individual)
+        return result
 
     
     
