@@ -1,3 +1,5 @@
+import static java.util.Objects.requireNonNull;
+
 import java.util.List;
 
 public class Individual {
@@ -8,6 +10,7 @@ public class Individual {
     private String introduction;
     private List<String> habbits;
     private Coordicate coordicate;
+    private Individual matchIndividual;
 
     public void setId(int id) throws IllegalArgumentException {
         if (id < 0) {
@@ -27,19 +30,11 @@ public class Individual {
         this.gender = gender;
     }
 
-    public String getGender(){
-        return this.gender;
-    }
-
     public void setAge(int age) throws Exception {
         if (age < 18) {
             throw new Exception("Age must be greater than 18");
         }
         this.age = age;
-    }
-
-    public int getAge() {
-        return this.age;
     }
 
     public void setIntroduction(String introduction) throws IllegalArgumentException {
@@ -48,10 +43,6 @@ public class Individual {
             throw new IllegalArgumentException("Introduction must be between 0 and 200 characters");
         }
         this.introduction = introduction;
-    }
-
-    public String getIntroduction() {
-        return this.introduction;
     }
 
     public void setHabbits(List<String> habbits) throws IllegalArgumentException {
@@ -63,5 +54,24 @@ public class Individual {
         this.habbits = habbits;
     }
 
+    public List<String> getHabbits() {
+        return this.habbits;
+    }
+
+    public void setCoordicate(Coordicate coordicate) {
+        this.coordicate = requireNonNull(null, "Coordicate must not be null");
+    }
+
+    public Coordicate getCoordicate() {
+        return this.coordicate;
+    }
+
+    public void setIndividual(Individual matchIndividual) {
+        this.matchIndividual = requireNonNull(null, "MatchIndividual must not be null");
+    }
+
+    public Individual getIndividual() {
+        return this.matchIndividual;
+    }
 
 }

@@ -1,6 +1,6 @@
 import java.util.List;
 
 public interface MatchStragety {
-    public List<Individual> match(List<Individual> individuals);
+    public List<Individual> match(List<Individual> individuals, Individual targetIndividual);
 
 }
