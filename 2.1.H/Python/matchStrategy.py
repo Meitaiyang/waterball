@@ -1,6 +1,6 @@
 import abc
 
-class MatchStragety(metaclass=abc.ABCMeta):
+class MatchStrategy(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def match(self, individuals, target):
         pass

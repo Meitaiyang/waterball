@@ -1,11 +1,17 @@
-from matchStragety import MatchStragety
+from matchStrategy import MatchStrategy
 
-class HabitBase(MatchStragety):
+class HabitBase(MatchStrategy):
     
     # find the individual with cover most habit
     # The habbit is the list of string
     def match(self, individuals, target):
-        individuals.sort(key=lambda individual: self.cover(individual.getHabbit(), target.getHabbit()))
+
+        for individual in individuals:
+            if individual.getId() == target.getId():
+                individuals.remove(individual)
+                break
+
+        individuals.sort(key=lambda individual: self.cover(individual.getHabbit(), target.getHabbit()), reverse=True)
         return individuals
 
     def cover(self, individual1, individual2):

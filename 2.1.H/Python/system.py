@@ -10,8 +10,9 @@ class System():
         return self.individuals
 
     def match(self, individual):
-        result = self.matchStragety.match(self.individuals, individual)
-        return result
+        result = self.matchStragety.match(self.individuals, individual)[0]
+        individual.setIndividual(result)
+        return individual
 
     
     

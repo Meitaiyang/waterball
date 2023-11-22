@@ -1,8 +1,16 @@
 import math
-from matchStragety import MatchStragety
+from matchStrategy import MatchStrategy
 
-class DistanceBase(MatchStragety):
+class DistanceBase(MatchStrategy):
     def match(self, individuals, target):
+
+        # drop target itself in individuals first
+
+        for individual in individuals:
+            if individual.getId() == target.getId():
+                individuals.remove(individual)
+                break
+
         # sort individuals by distance
         individuals.sort(key=lambda individual: self.distance(individual.getCoordinate(), target.getCoordinate()))
         return individuals
