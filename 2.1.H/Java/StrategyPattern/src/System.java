@@ -15,11 +15,12 @@ public class System {
         return this.individuals;
     }
 
-    public Individual match(Individual targetIndividual) throws Exception {
+    public void match(Individual targetIndividual) throws Exception {
         if (targetIndividual == null) {
             throw new Exception("Target individual must not be null");
         }
-        return this.matchStragety.match(this.individuals, targetIndividual);
         
+        targetIndividual.setIndividual(matchStragety.match(individuals, targetIndividual).get(0));
+
     }
 }

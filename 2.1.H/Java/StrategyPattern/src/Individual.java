@@ -8,9 +8,18 @@ public class Individual {
     private String gender;
     private int age;
     private String introduction;
-    private List<String> habbits;
+    private List<String> habits;
     private Coordicate coordicate;
     private Individual matchIndividual;
+
+    public Individual(int id, String gender, int age, String intro, List<String> habits, Coordicate coordicate) throws Exception{
+        setId(id);
+        setGender(gender);
+        setAge(age);
+        setIntroduction(intro);
+        sethabits(habits);
+        setCoordicate(coordicate);
+    }
 
     public void setId(int id) throws IllegalArgumentException {
         if (id < 0) {
@@ -45,21 +54,21 @@ public class Individual {
         this.introduction = introduction;
     }
 
-    public void setHabbits(List<String> habbits) throws IllegalArgumentException {
-        for (String habbit : habbits) {
-            if (habbit.length() < 1 || habbit.length() > 20) {
-                throw new IllegalArgumentException("Habbit" + habbit + "Habbit must be between 1 and 20 characters");
+    public void sethabits(List<String> habits) throws IllegalArgumentException {
+        for (String habit : habits) {
+            if (habit.length() < 1 || habit.length() > 20) {
+                throw new IllegalArgumentException("habit" + habit + "habit must be between 1 and 20 characters");
             }
         }
-        this.habbits = habbits;
+        this.habits = habits;
     }
 
-    public List<String> getHabbits() {
-        return this.habbits;
+    public List<String> getHabits() {
+        return this.habits;
     }
 
     public void setCoordicate(Coordicate coordicate) {
-        this.coordicate = requireNonNull(null, "Coordicate must not be null");
+        this.coordicate = requireNonNull(coordicate, "Coordicate must not be null");
     }
 
     public Coordicate getCoordicate() {
@@ -67,7 +76,7 @@ public class Individual {
     }
 
     public void setIndividual(Individual matchIndividual) {
-        this.matchIndividual = requireNonNull(null, "MatchIndividual must not be null");
+        this.matchIndividual = requireNonNull(matchIndividual, "MatchIndividual must not be null");
     }
 
     public Individual getIndividual() {
