@@ -31,7 +31,7 @@ public class Main {
         System.out.println(targetIndividual.getIndividual().getId());
 
         matchSystem.match(new Reverse(new DistanceBased()), targetIndividual);
-        System.out.print("DistanceBased: ");
+        System.out.print("Reverse DistanceBased: ");
         System.out.println(targetIndividual.getIndividual().getId());
 
 
