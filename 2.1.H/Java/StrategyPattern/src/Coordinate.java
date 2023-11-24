@@ -1,10 +1,10 @@
 
-public class Coordicate {
+public class Coordinate {
 
     private double x;
     private double y;
 
-    public Coordicate(double x, double y) {
+    public Coordinate(double x, double y) {
         setX(x);
         setY(y);
     }

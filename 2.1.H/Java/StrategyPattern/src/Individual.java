@@ -9,16 +9,16 @@ public class Individual {
     private int age;
     private String introduction;
     private List<String> habits;
-    private Coordicate coordicate;
+    private Coordinate coordinate;
     private Individual matchIndividual;
 
-    public Individual(int id, String gender, int age, String intro, List<String> habits, Coordicate coordicate) throws Exception{
+    public Individual(int id, String gender, int age, String intro, List<String> habits, Coordinate coordinate) throws Exception{
         setId(id);
         setGender(gender);
         setAge(age);
         setIntroduction(intro);
-        sethabits(habits);
-        setCoordicate(coordicate);
+        setHabits(habits);
+        setCoordinate(coordinate);
     }
 
     public void setId(int id) throws IllegalArgumentException {
@@ -54,7 +54,7 @@ public class Individual {
         this.introduction = introduction;
     }
 
-    public void sethabits(List<String> habits) throws IllegalArgumentException {
+    public void setHabits(List<String> habits) throws IllegalArgumentException {
         for (String habit : habits) {
             if (habit.length() < 1 || habit.length() > 20) {
                 throw new IllegalArgumentException("habit" + habit + "habit must be between 1 and 20 characters");
@@ -64,15 +64,17 @@ public class Individual {
     }
 
     public List<String> getHabits() {
+
         return this.habits;
     }
 
-    public void setCoordicate(Coordicate coordicate) {
-        this.coordicate = requireNonNull(coordicate, "Coordicate must not be null");
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = requireNonNull(coordinate, "coordinate must not be null");
     }
 
-    public Coordicate getCoordicate() {
-        return this.coordicate;
+    public Coordinate getCoordinate() {
+
+        return this.coordinate;
     }
 
     public void setIndividual(Individual matchIndividual) {
