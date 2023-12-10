@@ -13,6 +13,10 @@ public abstract class Player {
         this.hand = hand;
     }
 
+    public Hand getHand() {
+        return hand;
+    }
+
     public void addCard(Card card){
         hand.addCard(card);
     }
