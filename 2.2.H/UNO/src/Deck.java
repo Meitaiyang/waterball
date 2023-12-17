@@ -5,6 +5,7 @@ public class Deck {
     private List<Card> cards = new ArrayList<>();
 
     private int cardAmount;
+    private Desk desk;
 
     public Deck() {
         setCards();
@@ -37,6 +38,13 @@ public class Deck {
 
     public void setCardAmount() {
         this.cardAmount = cards.size();
+    }
+
+    public void checkCardAmount() {
+        if (cardAmount == 0) {
+            cards.addAll(desk.getCards());
+            desk.getCards().clear();
+        }
     }
 }
 

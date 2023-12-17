@@ -1,9 +1,15 @@
 public abstract class Player {
-    private String name;
-    private Hand hand;
+
+    // 不太確定這邊應該要用getter去讓child class取得，還是這樣開protected就好
+    protected String name;
+    protected Hand hand;
     private UNO game;
 
-    public abstract String nameSelf();
+    public Player() {
+        setHand(new Hand());
+    }
+
+    public abstract void nameSelf(int order);
 
     public String getName() {
         return name;
@@ -21,12 +27,10 @@ public abstract class Player {
         hand.addCard(card);
     }
 
-    public abstract void showCard();
+    public abstract void showCard() throws Exception;
 
     public void joinGame(UNO uno){
         this.game = uno;
     }
-
-    
 
 }

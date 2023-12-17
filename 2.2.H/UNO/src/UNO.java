@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
 public class UNO {
-    private List<Player> players;
-    private Deck deck;
+    private final List<Player> players = new ArrayList<>();
+    private final Deck deck = new Deck();
     private Player winner;
 
     public void setWinner(Player winner){
@@ -16,27 +17,35 @@ public class UNO {
     }
 
     public void init(){
-        players.forEach(Player::nameSelf);
+        for(Player player : players){
+            player.nameSelf(players.indexOf(player) + 1);
+        }
         deck.shuffle();
         beginDrawCard();
     }
 
-    public void takeTurn(){
+    public void takeTurn() throws Exception {
         while (noWinner()){
             for (Player player : players){
+                deck.checkCardAmount();
                 if (checkWinner(player)){
                     return;
                 }
+                deck.checkCardAmount();
                 player.showCard();
             }
         }
     }
 
-    public boolean noWinner(){
+    public void end(){
+        System.out.println("Winner is " + winner.getName());
+    }
+
+    private boolean noWinner(){
         return winner == null;
     }
 
-    public boolean checkWinner(Player player){
+    private boolean checkWinner(Player player){
         if (player.getHand().getCardAmount() == 0){
             setWinner(player);
             return true;
@@ -44,13 +53,16 @@ public class UNO {
         return false;
     }
 
-    public void beginDrawCard(){
+    private void beginDrawCard(){
         for (int amout = 0 ; amout<5 ; amout++){
             players.forEach(this::getCardFromDeck);
         }
+        for (Player player : players){
+            player.getHand().setCardAmount();
+        }
     }
 
-    public void getCardFromDeck(Player player){
+    private void getCardFromDeck(Player player){
         player.addCard(deck.drawCard());
     }
 
