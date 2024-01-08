@@ -6,6 +6,7 @@ public class Deck {
 
     private UNO uno;
     private List<Card> cards = new ArrayList<>();
+    private int cardAmount;
 
     public static Deck standard40Cards() {
         Deck deck = new Deck();
@@ -32,5 +33,16 @@ public class Deck {
 
     public Card drawCard() {
         return cards.remove(0);
+    }
+
+    public int getCardAmount() {
+        cardAmount = cards.size();
+        return cards.size();
+    }
+
+    public void addCard(List<Card> cardFromDeck) {
+        for(Card card:cardFromDeck) {
+            cards.add(card);
+        }
     }
 }

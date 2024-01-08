@@ -1,17 +1,17 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public abstract class Player {
 
-    private String name;
+    protected String name;
     private UNO uno;
     private List<Card> hands = new ArrayList<>();
+
     public void setGame(UNO uno) {
         this.uno = uno;
     }
 
-    public abstract void nameSelf();
+    public abstract void nameSelf(int order);
 
     public String getName() {
         return name;

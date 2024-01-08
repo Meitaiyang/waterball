@@ -21,7 +21,10 @@ public class UNO {
     }
 
     public void init() {
-        players.forEach(player -> player.nameSelf());
+        for (int p = 0 ; p<players.size() ; p++){
+            players.get(p).nameSelf(p+1);
+        }
+        // players.forEach(player -> player.nameSelf());
         deck.shuffle();
         for(Player player : players) {
             for(int i = 0; i < 5; i++) {
@@ -32,13 +35,17 @@ public class UNO {
     }
 
     public void takeTurn() {
-       for(Player player : players) {
-           if(player.getHands().size() == 0) {
-               System.out.println(player.getName() + " wins!");
-               return;
-           }
-           player.showCard();
-       }
+        for(Player player : players) {
+            if(player.getHands().size() == 0) {
+                System.out.println(player.getName() + " wins!");
+                return;
+            }
+            if(deck.getCardAmount() == 0) {
+                deck.addCard(dask.drawCardToDeck());
+
+            }
+            player.showCard();
+        }
     }
 
 }
