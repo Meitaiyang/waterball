@@ -18,4 +18,8 @@ public class Dask {
         }
         return cardToDeck;
     }
+
+    public Card showTopCard() {
+        return cards.get(cards.size()-1);
+    }
 }

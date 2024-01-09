@@ -1,3 +1,4 @@
+import java.util.EmptyStackException;
 import java.util.List;
 
 public class UNO {
@@ -28,10 +29,17 @@ public class UNO {
         deck.shuffle();
         for(Player player : players) {
             for(int i = 0; i < 5; i++) {
-                player.addCard(deck.drawCard());
+                playerAddCard(player);
             }
         }
         Dask.addCard(deck.drawCard());
+    }
+
+    public void playerAddCard(Player player) throws EmptyStackException {
+        if (deck.getCardAmount() == 0){
+            throw new EmptyStackException();
+        }
+        player.addCard(deck.drawCard());
     }
 
     public void takeTurn() {
@@ -44,7 +52,8 @@ public class UNO {
                 deck.addCard(dask.drawCardToDeck());
 
             }
-            player.showCard();
+            Card showedCard = player.showCard(dask.showTopCard());
+            dask.addCard(showedCard);
         }
     }
 

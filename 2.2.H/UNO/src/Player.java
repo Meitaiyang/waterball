@@ -3,9 +3,13 @@ import java.util.List;
 
 public abstract class Player {
 
-    protected String name;
-    private UNO uno;
-    private List<Card> hands = new ArrayList<>();
+    private String name;
+    protected UNO uno;
+    protected List<Card> hands = new ArrayList<>();
+
+    protected void setName(String name){
+        this.name = name;
+    }
 
     public void setGame(UNO uno) {
         this.uno = uno;
@@ -25,5 +29,5 @@ public abstract class Player {
         return hands;
     }
 
-    public abstract Card showCard();
+    public abstract Card showCard(Card daskTopCard);
 }
