@@ -20,10 +20,26 @@ public class AIPlayer extends Player{
 
         if (matchingCards.isEmpty()) {
             uno.playerAddCard(this); // or throw an exception, depending on your use case
+            System.out.println("The top card is "+daskTopCard.toString()+", and "+getName()+" hasn't card to show, draw one card to hand");
+            return null;
         }
 
         Random random = new Random();
-        return matchingCards.get(random.nextInt(matchingCards.size()));
+        int selectCardIndex = random.nextInt(matchingCards.size());
+        System.out.println("The top card is "+daskTopCard.toString()+", and "+getName() + " show the card "+matchingCards.get(selectCardIndex));
+
+        Card cardToShow = null;
+        for (Card hand:hands){
+            if (hand.toString().equals(matchingCards.get(selectCardIndex).toString())) {
+                cardToShow = hand;
+                break;
+            }
+        }
+
+        if(!hands.remove(cardToShow)){
+            throw new IllegalArgumentException();
+        }
+        return cardToShow;
 
     }
 }

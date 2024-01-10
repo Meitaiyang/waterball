@@ -6,17 +6,18 @@ public class UNO {
     private Deck deck;
     private Dask dask = new Dask();
     private List<Player> players;
+    private Player winner;
 
-    public UNO(Deck deck) {
+    public UNO() {
         setDeck();
     }
 
-    public void setDeck() {
-        this.deck = new Deck();
+    private void setDeck() {
+        this.deck = Deck.standard40Cards();
         deck.setGame(this);
     }
 
-    private void joinPlayer(List<Player> players) {
+    public void joinPlayer(List<Player> players) {
         this.players = players;
         players.forEach(player -> player.setGame(this));
     }
@@ -43,18 +44,24 @@ public class UNO {
     }
 
     public void takeTurn() {
-        for(Player player : players) {
-            if(player.getHands().size() == 0) {
-                System.out.println(player.getName() + " wins!");
-                return;
+        while (winner == null)
+            for(Player player : players) {
+                if(player.getHands().size() == 0) {
+                    System.out.println(player.getName() + " wins!");
+                    setWinner(player);
+                    return;
+                }
+                if(deck.getCardAmount() == 0) {
+                    deck.addCard(dask.drawCardToDeck());
+                }
+                Card showedCard = player.showCard(dask.showTopCard());
+                if(showedCard != null)
+                    dask.addCard(showedCard);
             }
-            if(deck.getCardAmount() == 0) {
-                deck.addCard(dask.drawCardToDeck());
+    }
 
-            }
-            Card showedCard = player.showCard(dask.showTopCard());
-            dask.addCard(showedCard);
-        }
+    private void setWinner(Player player) {
+        this.winner = player;
     }
 
 }
