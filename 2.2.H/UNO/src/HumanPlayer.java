@@ -23,13 +23,8 @@ public class HumanPlayer extends Player{
     public Card showCard(Card daskTopCard){
         showTopCard(daskTopCard);
 
-        List<Card> matchingCards = hands
-                .stream().
-                filter(card -> card.getColor() == daskTopCard.getColor() || card.getNumber() == daskTopCard.getNumber())
-                .collect(Collectors.toList());
-
         if (matchingCards.isEmpty()) {
-            System.out.println("You don't have vailed card, draw on card from deck to your hand.");
+            System.out.println("You don't have vailed card, draw one card from deck to your hand.");
             uno.playerAddCard(this); // or throw an exception, depending on your use case
             return null;
         }
@@ -44,7 +39,7 @@ public class HumanPlayer extends Player{
     }
 
     private void showTopCard(Card daskTopCard){
-        System.out.printf("The top card on dask is (%s) \n", daskTopCard.toString());
+        System.out.printf("\n\n The top card on dask is (%s) \n", daskTopCard.toString());
     }
 
     private int handChoice() {

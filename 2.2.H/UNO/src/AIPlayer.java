@@ -13,14 +13,10 @@ public class AIPlayer extends Player{
 
     @Override
     public Card showCard(Card daskTopCard){
-        List<Card> matchingCards = hands
-                .stream().
-                filter(card -> card.getColor() == daskTopCard.getColor() || card.getNumber() == daskTopCard.getNumber())
-                .collect(Collectors.toList());
 
         if (matchingCards.isEmpty()) {
-            uno.playerAddCard(this); // or throw an exception, depending on your use case
             System.out.println("The top card is "+daskTopCard.toString()+", and "+getName()+" hasn't card to show, draw one card to hand");
+            uno.playerAddCard(this);
             return null;
         }
 

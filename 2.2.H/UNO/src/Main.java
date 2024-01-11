@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         List<Player> players = new ArrayList<>();
         players.add(new HumanPlayer());
-        for (int p=0 ; p<3 ; p++)
+        for (int p=0 ; p<6 ; p++)
             players.add(new AIPlayer());
         UNO uno = new UNO();
         uno.joinPlayer(players);

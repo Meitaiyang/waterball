@@ -37,6 +37,7 @@ public class UNO {
     }
 
     public void playerAddCard(Player player) throws EmptyStackException {
+
         if (deck.getCardAmount() == 0){
             throw new EmptyStackException();
         }
@@ -46,17 +47,21 @@ public class UNO {
     public void takeTurn() {
         while (winner == null)
             for(Player player : players) {
+                if(deck.getCardAmount() == 0) {
+                    deck.addCard(dask.drawCardToDeck());
+                }
+
+                player.setMatchingCards(dask.showTopCard());
+
+                Card showedCard = player.showCard(dask.showTopCard());
+                if(showedCard != null)
+                    dask.addCard(showedCard);
+
                 if(player.getHands().size() == 0) {
                     System.out.println(player.getName() + " wins!");
                     setWinner(player);
                     return;
                 }
-                if(deck.getCardAmount() == 0) {
-                    deck.addCard(dask.drawCardToDeck());
-                }
-                Card showedCard = player.showCard(dask.showTopCard());
-                if(showedCard != null)
-                    dask.addCard(showedCard);
             }
     }
 

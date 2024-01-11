@@ -44,5 +44,7 @@ public class Deck {
         for(Card card:cardFromDeck) {
             cards.add(card);
         }
+        System.out.println("Get card from Dask");
+        shuffle();
     }
 }
