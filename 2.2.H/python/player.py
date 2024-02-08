@@ -21,3 +21,7 @@ class Player:
     @abc.abstractmethod
     def name_self(self):
         pass
+
+    def add_card(self, card):
+        self.__hands.append(card)
+
